@@ -22,9 +22,9 @@ TEST_CASE("Galois Field Subtraction", "[Sub][GF(2^8)]") {
 TEST_CASE("Galois Field Multiplication", "[Mul][GF(2^8)]") {
     init_lookup_tables();
 
-    REQUIRE(gf_mult(0, 0) == 0);
+    REQUIRE(gf_mul(0, 0) == 0);
 
-    REQUIRE(gf_mult(0b10001001, 0b00101010) == 0b11000011);
+    REQUIRE(gf_mul(0b10001001, 0b00101010) == 0b11000011);
     // TODO: more tests
 }
 

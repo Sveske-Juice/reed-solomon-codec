@@ -17,10 +17,10 @@ uint8_t gf_add(uint8_t x, uint8_t y);
 uint8_t gf_sub(uint8_t x, uint8_t y);
 
 // Carry-Less Multiplication
-uint8_t cl_mult(uint8_t x, uint8_t y);
+uint8_t cl_mul(uint8_t x, uint8_t y);
 
 // GF(2^8) Multiplication
-uint8_t gf_mult(uint8_t x, uint8_t y);
+uint8_t gf_mul(uint8_t x, uint8_t y);
 
 uint8_t gf_div(uint8_t x, uint8_t y);
 

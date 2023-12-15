@@ -32,7 +32,7 @@ void init_lookup_tables(int primitive_element) {
     }
 }
 
-uint8_t gf_mult(uint8_t x, uint8_t y) {
+uint8_t gf_mul(uint8_t x, uint8_t y) {
     if (!x || !y) return 0;
 
     return gf_exp[gf_log[x] + gf_log[y]];
