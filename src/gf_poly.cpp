@@ -35,10 +35,10 @@ std::vector<uint8_t> gf_poly_mul(std::vector<uint8_t> &x,
     return res;
 }
 
-std::tuple<std::vector<uint8_t>, std::vector<uint8_t>>
+std::pair<std::vector<uint8_t>, std::vector<uint8_t>>
 gf_poly_div(std::vector<uint8_t> &dividend, std::vector<uint8_t> &divisor) {
     std::vector res = dividend; // Copy dividend
-    for (int i = 0; i < dividend.size() - divisor.size() - 1; i++) {
+    for (int i = 0; i < (dividend.size() - divisor.size() - 1); i++) {
         uint8_t coef = res[i];
         if (coef != 0) {
             for (int j = 1; j < divisor.size(); j++) {
@@ -48,16 +48,17 @@ gf_poly_div(std::vector<uint8_t> &dividend, std::vector<uint8_t> &divisor) {
         }
     }
 
-    int seperator = -(divisor.size() - 1);
+    size_t seperator = dividend.size() - divisor.size() - 1;
+
     std::vector<uint8_t> quotient;
     std::vector<uint8_t> remainder;
-    quotient.resize(seperator);
-    remainder.resize(res.size() - seperator);
+    quotient.reserve(seperator);
+    remainder.reserve(res.size() - seperator);
 
     quotient.assign(res.begin(), res.begin() + seperator);
     remainder.assign(res.begin() + seperator + 1, res.end());
 
-    return { quotient, remainder };
+    return std::make_pair(quotient, remainder);
 }
 
 uint8_t gf_poly_eval(std::vector<uint8_t> &poly, uint8_t x) {
