@@ -37,18 +37,18 @@ std::vector<uint8_t> gf_poly_mul(std::vector<uint8_t> &x,
 
 std::pair<std::vector<uint8_t>, std::vector<uint8_t>>
 gf_poly_div(std::vector<uint8_t> &dividend, std::vector<uint8_t> &divisor) {
-    std::vector res = dividend; // Copy dividend
-    for (int i = 0; i < (dividend.size() - divisor.size() - 1); i++) {
+    std::vector<uint8_t> res = dividend; // Copy dividend
+    for (int i = 0; i < (dividend.size() - (divisor.size() - 1)); i++) {
         uint8_t coef = res[i];
         if (coef != 0) {
-            for (int j = 1; j < divisor.size(); j++) {
+            for (uint8_t j = 1; j < divisor.size(); j++) {
                 if (divisor[j] != 0)
                     res[i + j] ^= gf_mul(divisor[j], coef);
             }
         }
     }
 
-    size_t seperator = dividend.size() - divisor.size() - 1;
+    size_t seperator = dividend.size() - (divisor.size() - 1);
 
     std::vector<uint8_t> quotient;
     std::vector<uint8_t> remainder;
@@ -63,7 +63,7 @@ gf_poly_div(std::vector<uint8_t> &dividend, std::vector<uint8_t> &divisor) {
 
 uint8_t gf_poly_eval(std::vector<uint8_t> &poly, uint8_t x) {
     uint8_t y = poly[0];
-    for (int i = 1; i < poly.size(); i++) {
+    for (uint8_t i = 1; i < poly.size(); i++) {
         y = gf_mul(y, x) ^ poly[i];
     }
     return y;
