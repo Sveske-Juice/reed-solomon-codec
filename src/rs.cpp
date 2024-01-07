@@ -49,8 +49,7 @@ std::vector<uint8_t> rs_encode(std::vector<uint8_t> &data, uint8_t nsym) {
 std::vector<uint8_t> rs_calc_syndrome(std::vector<uint8_t> &data,
                                       uint8_t nsym) {
     std::vector<uint8_t> syndrome;
-    syndrome.resize(nsym + 1);
-    syndrome[0] = 0;
+    syndrome.assign(nsym + 1, 0);
 
     for (uint8_t i = 1; i < nsym + 1; i++) {
         syndrome[i] = gf_poly_eval(data, gf_pow(2, i - 1));
