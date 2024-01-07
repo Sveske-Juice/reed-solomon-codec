@@ -56,7 +56,7 @@ gf_poly_div(std::vector<uint8_t> &dividend, std::vector<uint8_t> &divisor) {
     remainder.reserve(res.size() - seperator);
 
     quotient.assign(res.begin(), res.begin() + seperator);
-    remainder.assign(res.begin() + seperator + 1, res.end());
+    remainder.assign(res.begin() + seperator, res.end());
 
     return std::make_pair(quotient, remainder);
 }

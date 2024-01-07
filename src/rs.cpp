@@ -35,6 +35,9 @@ std::vector<uint8_t> rs_encode(std::vector<uint8_t> &data, uint8_t nsym) {
     std::vector<uint8_t> encoded;
     encoded.reserve(data_size + std::get<1>(quotientRemainderPair).size());
 
+    // std::cout << "remainder: ";
+    // print_vec(std::get<1>(quotientRemainderPair));
+
     // Add data and remainder to encoded codeword
     for (int i = 0; i < data_size; i++) {
         encoded.push_back(data[i]);
