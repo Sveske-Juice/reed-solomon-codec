@@ -22,3 +22,5 @@ or build all:\
 
 ## How to use
 see [main.cpp](https://github.com/Sveske-Juice/reed-solomon-codec/blob/master/main.cpp) for an example of how to use the encoding decoding facade functions.
+
+resource: https://en.wikiversity.org/wiki/Reed%E2%80%93Solomon_codes_for_coders
