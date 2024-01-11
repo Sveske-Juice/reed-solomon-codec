@@ -13,7 +13,7 @@ cd build/
 cmake ..
 ```
 Then to only build program:\
-`make hamming`\
+`make rsc`\
 the unit tests:\
 `make tests`\
 or build all:\
